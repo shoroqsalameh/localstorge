@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage</title>
+    <style>
+             body{
+                   text-align: center;
+             }
+             div{
+                  margin: 20px 0;
+                   
+             }
+             input{ 
+
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                text-align: center;
+                border:2px solid blue;
+                
+             }
+             #submit{
+                    background-color:blue;
+                    border: 2px solid white;
+                    font-weight: 900;
+                    color: white;
+                    
+                    
+             }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <div>
+            <input type="text" placeholder="Subject" name="Subject" id="Subject">
+        </div>
+        <div>
+            <input type="text" name="Description" id="Description" placeholder="Description">
+        </div>
+        <div>
+            <input type="text" name="UserType" id="UserType" placeholder="UserType">
+        </div>
+        <div>
+            <input type="text" name="TechnologyUsed" id="Technology_used" placeholder="Technology used">
+        </div>
+        <div>
+            <input type="submit" onclick="storgeData()" id="submit">
+        </div>
+    </form>
+
+    <script>
+        function storgeData() {
+            let subj = document.getElementById("Subject").value;
+            let Desc = document.getElementById("Description").value;
+            let UserType = document.getElementById("UserType").value;
+            let TechnologyUsed = document.getElementById("Technology_used").value;
+
+            let Data = {
+                subject: subj,
+                description: Desc,
+                userType: UserType, // Fix the variable name here
+                technologyused: TechnologyUsed,
+            };
+
+            sessionStorage.setItem('Data', JSON.stringify(Data));
+        }
+    </script>
+</body>
+</html>

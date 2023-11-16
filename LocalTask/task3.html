@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+         .container{
+             display: flex;
+             justify-content: space-between;
+             text-align: center;
+         }
+         .register,.login{
+                 border: 2px solid blue;
+
+
+         }
+         div{
+              margin: 20px 40px;
+         }
+         input{
+                
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            text-align: center;
+            border:2px solid blue;
+            
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="register">
+
+    
+    <form action="#">
+        <div>
+            <input type="text" placeholder="First Name" name="Fname" id="Fname">
+        </div>
+        <div>
+            <input type="text" placeholder="Last Name" name="Lname" id="Lname">
+        </div>
+        <div>
+            <input type="text" placeholder="Email" name="email" id="email">
+        </div>
+        <div>
+            <input type="password" placeholder="Password" name="pass" id="pass">
+        </div>
+        <div>
+            <input type="submit" onclick="StorgeData()">
+        </div>
+    </form>
+    </div>
+      <div class="login">
+        <div>
+            <input type="email" placeholder="Email " name="email" id="email">
+        </div>
+        <div>
+            <input type="password" placeholder="Password" name="pass2" id="pass2">
+        </div>
+        <div>
+            <input type="submit" onclick="readData()">
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function StorgeData() {
+            let FirstName = document.getElementById("Fname").value;
+            let LastName = document.getElementById("Lname").value;
+            let Email = document.getElementById("email").value;
+            let Password = document.getElementById("pass").value;
+
+            let userData = {
+                firstname: FirstName,
+                lastname: LastName,
+                email: Email,
+                password: Password, // Corrected the variable name here
+            };
+
+            localStorage.setItem('userInfo', JSON.stringify(userData));
+        }
+        function readData(){
+            let Email = document.getElementById("email2").value;
+            let Password = document.getElementById("pass2").value;
+            let data=JSON.parse(localStorage.getItem('userInfo'));
+            if(data.email===Email && data.password===Password)
+            {
+                 alert("Login");
+            }
+            else{
+                 alert("Failed");
+            }
+
+
+        }
+    </script>
+</body>
+</html>

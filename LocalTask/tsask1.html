@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal data</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+
+        form {
+            width: 70%;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <div> <input type="text" placeholder="Name" name="Name" id="Name" required></div>
+        <div>
+            <input type="text" placeholder="Age" name="Age" id="Age" required>
+        </div>
+        <div>
+            <label>
+                Gender:
+                <input type="radio" name="Gender" id="Female" value="Female">Female
+                <input type="radio" name="Gender" id="Male" value="Male">Male
+            </label>
+        </div>
+        <div>
+            <textarea name="brief" id="Brief" cols="30" rows="10" placeholder="Brief Description"></textarea>
+        </div>
+        <div>
+            <input type="text" placeholder="Major and University" name="MjUn" id="MjUn">
+        </div>
+        <div>
+            <label for="programmingLanguage" id="prog">
+                <input type="checkbox" name="Java" id="Java" value="Java" class="Prog">Java
+                <input type="checkbox" name="JS" id="JS" value="JS" class="Prog">JS
+                <input type="checkbox" name="C++" id="C++" value="Ruby" class="Prog">C++
+                <input type="checkbox" name="python" id="python" value="Python" class="Prog">python
+                <input type="checkbox" name="Ruby" id="Ruby" value="Ruby" class="Prog">Ruby
+                <input type="checkbox" name="Go" id="Go" value="Go" class="Prog">Go
+                <input type="checkbox" name="R" id="R" value="R" class="Prog">R 
+                <input type="checkbox" name="C#" id="C#" value="C#" class="Prog">C#
+            </label>
+        </div>
+        <div>
+           
+            <input type="button" id="submit" onclick="storgeData()" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        
+
+        let submitBtn = document.getElementById("submit").value;
+
+        function Gender() {
+            let g = document.getElementsByName("Gender");
+            if (g[0].checked) {
+                return "Female";
+            } else {
+                return "Male";
+            }
+        }
+
+        function pro() {
+            let programmingLanguage = document.querySelectorAll(".Prog:checked");
+            let prog = [];
+            for (let i = 0; i < programmingLanguage.length; i++) {
+                prog.push(programmingLanguage[i].value);
+            }
+            return prog;
+        }
+
+        function storgeData() {
+            let Name = document.getElementById("Name").value;
+            let Age = document.getElementById("Age").value;
+            let Brief = document.getElementById("Brief").value;
+            let Major = document.getElementById("MjUn").value;
+
+            let personalInfo = {
+                FullName: Name,
+                Age: Age,
+                Brief: Brief,
+                Major: Major,
+                Gender: Gender(),
+                programmingLanguage: pro(),
+            };
+
+            localStorage.setItem('Info', JSON.stringify(personalInfo));
+        }
+    </script>
+</body>
+</html>
