@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>info</title>
+    <style>
+               div{display: inline-block;}
+               p{display: inline;
+                 margin: 5px;
+               }
+
+
+    </style>
+</head>
+<body>
+          <form action="#">
+                   <div>
+                        <input type="text" name="Name" id="Name" placeholder="Name" class="info">
+                   </div>
+                   <div>
+                        <input type="email" name="email" id="email" placeholder="Email" class="info">
+                   </div>
+                   <div>
+                         <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number" class="info">
+                   </div>
+                  
+                   <div>
+                          <button onclick="print()">Click on me print</button>
+                   </div>
+                   <hr>
+                   <div class="displayinfo"></div>
+                   <hr>
+                   <div class="infoTable">
+                   
+                   </div>
+          </form>
+
+
+          <script>
+                   function print(){
+                    let name=document.getElementById("Name").value;
+                    let email=document.getElementById("email").value;
+                    let phoneNumber=document.getElementById("phonenumber").value;
+
+                  
+                          let displayinfo= document.querySelector(".displayinfo");
+                          let tableInfo=document.querySelector(".infoTable");
+                          displayinfo.innerHTML=
+                            `<p style="background-color:green;">${name}</p>`+
+                            `<p style="background-color:red;">${email}</p>`+
+                            `<p style="background-color:yellow;">${phoneNumber}</p>`;
+                           
+                           tableInfo.innerHTML=`<table border="2">
+                                             <tr><td>${name}</td>
+                                             <td>${email}</td>
+                                             <td>${phoneNumber}</td></tr>
+                           </table>`;
+
+                         document.getElementById("Name").value="";
+                         document.getElementById("email").value="";
+                         document.getElementById("phonenumber").value="";
+       
+                         
+                          
+                          
+                    } 
+                                                  
+
+
+                    
+          </script>
+</body>
+</html>
